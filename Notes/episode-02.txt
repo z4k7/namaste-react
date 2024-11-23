@@ -1,0 +1,31 @@
+There are two types of dependencies
+Dev depenency
+It is generally required in our development phase
+
+Normal Dependency 
+It is used in production also
+
+
+What is a bundler?
+Bundlers are used to bundle all our files into one file so as to push it into production. Example for bundlers
+are : Webpack, vite and parcel.
+Here we are using parcel as our bundler.
+
+There are two types of prefixes  for the package version in package.json.
+=> (~) Tilde
+It automatically ugrades the package into its new major version
+
+=> (^) Caret
+It automatically upgrades the package into its new minor versions
+
+Package Lock json
+It keeps track of all the versions of the dependencies that are installed in our project
+
+What is transitive dependency?
+When we install a dependency, for example by using 'npm i parcel', the dependency can have
+its own dependency and that dependencies can have their own dependencies and so on.. and 
+all these dependencies will be stored in the node modules and as a result the node modules will be having lot of files in it.
+
+
+Just like we have npm we have something known as npx. npm is used in cases where we want to get 
+or install a package but npx is used to execute a package.
