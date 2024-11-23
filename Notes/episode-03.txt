@@ -1,0 +1,48 @@
+React Element is basically an  object. When we render the react element, it becomes an HTML element.
+
+JSX is a javascript syntax which makes it easier to create react elements
+
+JSX is not a part of react. We can create React Apps without using JSX also. But it is used to make the development easier.
+
+JSX is a convention, where we kind of merge html and JS together.
+
+JSX is not html inside javascript. It is "JSX". JSX is not HTML, it's a HTML like syntax.
+
+JSX is not pure javascript and as a result our JS engine does not understand JSX. JS engine only understands ECMA script(ES6)
+
+Parcel is the one responsible for making browser/JS engine understand the JSX code. Parcel transpiles the code before it is 
+send into the browser.
+
+Parcel itself is not the one who transpiles the code, Parcel gives this responsibilty to "BABEL". 
+Babel is the one who transpiles the code before sending it into JS engine.
+
+Babel is not created by facebook.
+
+JSX at the end of the day is converted into React.createElement by Babel and that's how it is being rendered in the browser.
+
+Transpiling JSX to ES6 is not the only job of Babel. Babel does a lot of other things also.
+Babel can transpile the code to older versions such that older browsers can understand the code.
+
+If you have to give an attribute to your JSX, you have to use camelCase. 
+
+
+React Components
+
+There are two types of components in react
+
+=> Class Based Components - OLD
+=> Functional Components - NEW
+
+React functional component is just a normal javascript function
+
+A function that returns a JSX code is a functional component.
+
+What is component composition?
+
+Using the selector of one component inside another is known as component compositon
+
+We can show elements inside components and components inside elements and components inside components and elements inside elements.
+
+JSX sanitises our code such that attackers cannot cause any harm. For example, if we are using an api to get data and are showing
+that data like this {data} in our component, JSX sanitises {data} so that attacks and other malicious activities are automatically 
+prevented for absolutely free.
