@@ -1,0 +1,10 @@
+Passing props to a component is just like passing arguments to a function
+
+
+Config Driven UI
+When our website changes according to the data it receives it is known as config driven UI.
+In other words the configs that are present in the api data, determines how the UI should look like.
+
+
+whenever you are looping a component, always remember to give a key.
+using index as key is not recommended, but it is okay to use index as key if we dont have any other unique identifiers such as id
