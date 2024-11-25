@@ -24,9 +24,9 @@
   padding: 10px;
 }
 
-.search {
+/* .search {
   padding: 10px;
-}
+} */
 
 .res-container{
     display: flex;
@@ -46,4 +46,11 @@
 
 .res-logo {
   width: 100%;
+}
+
+.filter-btn{
+  margin:10px;
+  cursor: pointer;
+  background-color: dodgerblue;
+  color: white;
 }
