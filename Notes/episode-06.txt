@@ -1,0 +1,28 @@
+Monolith and Microservice Architecture
+
+In monolithic architecture every functionality or services will be inside one big bulk project. 
+Where as in Microservice architecture each service will be seperated into different projects and this
+is known as "Seperation of concerns". It also follows "Single Responsibility Principle", which means 
+that no service will interfere with another service.
+
+When to make an API call
+
+- When our app loads we will make api call, wait for the response and then render the page
+
+- When our app loads, we render whatever is available , for example show a skeleton, then make api call
+ and when we get response we will re-render the page
+
+ We will stick on to the second approach. But you might be thinking that we are rendering twice and wont it affect the performance.
+ No my dear friend, that is the beauty of react. The render cycle of React is very fast, so it doesnt affect the performance
+
+
+ UseEffect Hook
+
+ Hooks are normal javascript functions with specific usecases. We use useEfect hook for making api calls. useEffect takes two 
+ arguments, first one is a callback function and second one is a dependency array.
+
+ useEffect hook will be called after our page is rendered 
+
+ Definition of state react variable?
+
+ Whenever a state react variable updates, react triggers a reconciliation cycle (re-renders the entire component)
