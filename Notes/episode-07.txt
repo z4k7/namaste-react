@@ -1,0 +1,36 @@
+How is UseEffect Hook called?
+
+UseEffect has two arguments, first one is a callback function and second one is a dependency array.
+ But the dependency array is not mandatory, only the cb function is mandatory
+
+
+ UseEffect is generally called after every render of that component. But the dependency array changes
+  the behaviour of its render.
+  => Without dependency array, the UseEffect hook will be called on every 
+  render of the component.
+
+  => If dependency array is empty, then UseEffect is called only on initial render(Just once)
+
+  => If dependency array is having any dependency, then UseEffect is called every time the dependency is updated.
+
+
+  USESTATE
+
+  => Never create USESTATE outside of the component
+
+  => UseState has a specific purpose. It is used to create local state variables inside your functional component.
+
+  => Always try to call the UseState variables in the top. That is in the beginning of the component.
+
+  => Never create UseState variables inside loops, conditions or functions. It does not make sense. It can cause inconsistency in the code.
+
+
+  ROUTING
+
+  => First we have to create routing configuration.
+
+  => We use an import called createBrowserRouter, to define the routes.
+
+  => Then we use RouterProvider to provide the routing configuration to our app.
+
+  => React router gives us access to a hook called useRouteError

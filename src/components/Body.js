@@ -1,74 +1,86 @@
-import RestaurantCard from "./RestaurantCard";
-import { SWIGGY_API } from "../utils/constants";
-
-import { useEffect, useState } from "react";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router-dom";
+import useRestaurants from "../utils/useRetaurants";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [searchData, setSearchData] = useState("");
+  const {
+    listOfRestaurants,
+    filteredRestaurants,
+    searchData,
+    setSearchData,
+    handleSearch,
+    filterTopRated,
+  } = useRestaurants();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const {loggedInUser, setUserName} = useContext(UserContext);
 
-  const fetchData = async () => {
-    const data = await fetch(SWIGGY_API);
+  const onlineStatus = useOnlineStatus();
 
-    const json = await data.json();
-    console.log(json);
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
-    setListOfRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  if (onlineStatus === false) {
+    return (
+      <h1>
+        OOPS! Looks like you are offline. Please check your internet connection.
+      </h1>
     );
-    setFilteredRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  }
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="mx-auto">
+      <div className="flex items-center gap-3 p-5 ">
+        <div className="flex gap-2">
           <input
-            className="searchInput"
+            className="border border-solid border-black rounded-lg py-1 "
             value={searchData}
             onChange={(e) => {
               setSearchData(e.target.value);
             }}
           />
           <button
-            className="searchButton"
-            onClick={() => {
-              const filteredRestaurant = listOfRestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchData.toLowerCase())
-              );
-              setFilteredRestaurants(filteredRestaurant);
-            }}
+            className="px-4 py-1 bg-green-300 rounded-lg cursor-pointer "
+            onClick={handleSearch}
           >
             Search
           </button>
         </div>
 
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredRestaurants = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4.5
-            );
-            setFilteredRestaurants(filteredRestaurants);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+        <div>
+          <button
+            className="px-4 py-1 bg-violet-300 rounded-lg cursor-pointer "
+            onClick={filterTopRated}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
+
+        <div>
+          <label>Username : </label>
+          <input
+            className="border border-black rounded-lg"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
 
-      <div className="res-container">
+      <div className="flex flex-wrap gap-4 justify-center">
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            {restaurant.info.isOpen ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
+          </Link>
         ))}
       </div>
     </div>

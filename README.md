@@ -42,3 +42,11 @@ Normal JS Utility functions
 There are two very important react hooks,
 - useState() - used to generate super-powerful state variables in react.
 - useEffect()
+
+# 2 Types of routing in web Apps
+
+- Server Side Routing
+    We have to make a network call to the server and fetch the page and then render it on the browser.
+
+- Client Side Routing
+    No need of any network call to the server. 
