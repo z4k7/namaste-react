@@ -50,3 +50,22 @@ There are two very important react hooks,
 
 - Client Side Routing
     No need of any network call to the server. 
+
+    # Redux Toolkit
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- Dispatch(action)
+- Selector
+
+# Types of testing(developer)
+-Unit Testing
+-Integration Testing
+-End To End Testing - e2e Testing
+
+# Setting up testing in our app
+- Installed React Testing Library
+- Installed Jest
+- Installed Babel Dependencies
+- Configured Babel
